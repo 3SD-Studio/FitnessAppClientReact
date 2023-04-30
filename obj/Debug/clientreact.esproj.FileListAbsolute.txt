@@ -1,0 +1,2 @@
+C:\Programowanie\FitnessApp\ClientReact\obj\Debug\clientreact.esproj.SuggestedBindingRedirects.cache
+C:\Programowanie\FitnessApp\ClientReact\obj\Debug\clientreact.esproj.CoreCompileInputs.cache
