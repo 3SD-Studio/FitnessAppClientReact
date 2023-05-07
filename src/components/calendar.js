@@ -1,6 +1,6 @@
 import './calendar.css';
 
-function calendar() {
+function Calendar() {
   let monthNames = [
     'January', 'February', 'March', 
     'April', 'May', 'June', 
@@ -47,7 +47,7 @@ function calendar() {
           {calendarArray.map((week) => (
           <tr>
             {week.map((day) => (
-              <td><a>{day.date.getDate()}</a></td>
+              <td><CalendarItem value={day}> </CalendarItem></td>
           ))}
           </tr>
           ))}
@@ -59,8 +59,25 @@ function calendar() {
   );
 }
 
-export default calendar;
+export default Calendar;
 
+function CalendarItem(props) {
+  const styles = {
+    backgroundColor: props.value.Colour,
+    borderColor: props.value.Colour
+  }
+
+  return (
+    <>
+      <div class="calendarItemDiv"
+          style = {styles}>
+        <a>
+            {props.value.date.getDate()}
+       </a>
+      </div>
+    </>
+  );
+}
 
 class CalendarDate {
   date;

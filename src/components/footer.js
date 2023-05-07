@@ -1,14 +1,13 @@
-import './home.css';
+import './footer.css';
 
-function Home() {
+function Footer() {
   return (
-    <div class="grid-container">
-        <Calendar class="left"></Calendar>
-        <Nextworkout class="rightTop"></Nextworkout>
-        <Progress class="rightLow"></Progress>
-    </div>
-  
+    <>
+      <div class="footer">
+        <p>Footer works!</p>
+      </div>
+    </>
   );
 }
 
-export default Home;
+export default Footer;
