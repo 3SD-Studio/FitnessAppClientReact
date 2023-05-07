@@ -19,7 +19,7 @@ function Nextworkout() {
 
 
 function getNextWorkoutDate() {
-    return Date().toLocaleDateString();
+    return new Date().toLocaleDateString();
 }
 
 
