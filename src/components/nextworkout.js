@@ -1,16 +1,11 @@
 import './nextworkout.css';
+import { useState } from 'react';
+
+export default Nextworkout;
 
 function Nextworkout() {
-    let nextWorkoutDate = new Date().toLocaleDateString();
-    
-    let exerciseSetsList = [ 
-        'Legs',
-        'Arms',
-        'Chest',
-        'Back',
-        'Cardio'
-      ];
-    let chosenSet = exerciseSetsList[Math.floor(Math.random() * exerciseSetsList.length)];
+    const [nextWorkoutDate, setNextWorkoutDate] = useState(getNextWorkoutDate());
+    const [chosenSet, setChosenSet]= useState(getExerciseSet());
     
     return (
         <div class="nextWorkoutDiv">
@@ -22,4 +17,20 @@ function Nextworkout() {
     );
 }
 
-export default Nextworkout;
+
+function getNextWorkoutDate() {
+    return Date().toLocaleDateString();
+}
+
+
+function getExerciseSet() {
+    let exerciseSetsList = [ 
+        'Legs',
+        'Arms',
+        'Chest',
+        'Back',
+        'Cardio'
+    ];
+
+    return  exerciseSetsList[Math.floor(Math.random() * exerciseSetsList.length)];
+}

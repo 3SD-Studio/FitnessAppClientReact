@@ -1,34 +1,11 @@
+import { useState } from 'react';
 import './calendar.css';
 
+export default Calendar;
+
 function Calendar() {
-  let monthNames = [
-    'January', 'February', 'March', 
-    'April', 'May', 'June', 
-    'July', 'August', 'September',
-    'October', 'November', 'December'
-  ];
-
-  let month = monthNames[new Date().getMonth()].toUpperCase(); 
-
-  let calendarArray = [
-    [],
-    [],
-    [],
-    [],
-    [],
-  ]
-
-  // Counter to show 2 past weeks, current week, 2 future weeks
-  let currentDate = new Date();
-  let add = currentDate.getDay() === 0 ? 7 : currentDate.getDay();
-  let counter = 13 + add;
-  for (let i = 0; i < 5; i++) {
-    for (let j = 0; j < 7; j++) {
-      let tempDate = new Date();
-      tempDate.setDate(tempDate.getDate() - counter--);
-      calendarArray[i][j] = new CalendarDate(tempDate);
-    }
-  }
+  const[month, setMonth] = useState(getCurrentMonth()); 
+  const [calendar, setCalendar] = useState(initCalendar());
 
   return ( 
     <>
@@ -44,7 +21,7 @@ function Calendar() {
             <th>SA</th>
             <th>SU</th>
           </tr>
-          {calendarArray.map((week) => (
+          {calendar.map((week) => (
           <tr>
             {week.map((day) => (
               <td><CalendarItem value={day}> </CalendarItem></td>
@@ -59,7 +36,6 @@ function Calendar() {
   );
 }
 
-export default Calendar;
 
 function CalendarItem(props) {
   const styles = {
@@ -123,4 +99,40 @@ class CalendarDate {
       return '#7070ff';
     } 
   }
+}
+
+
+function initCalendar() {
+  let calendarArray = [
+    [],
+    [],
+    [],
+    [],
+    [],
+  ]
+
+  // Counter to show 2 past weeks, current week, 2 future weeks
+  let currentDate = new Date();
+  let add = currentDate.getDay() === 0 ? 7 : currentDate.getDay();
+  let counter = 13 + add;
+  for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < 7; j++) {
+      let tempDate = new Date();
+      tempDate.setDate(tempDate.getDate() - counter--);
+      calendarArray[i][j] = new CalendarDate(tempDate);
+    }
+  } 
+  return calendarArray;
+}
+
+
+function getCurrentMonth() {
+  let monthNames = [
+    'January', 'February', 'March', 
+    'April', 'May', 'June', 
+    'July', 'August', 'September',
+    'October', 'November', 'December'
+  ];
+
+  return monthNames[new Date().getMonth()].toUpperCase();
 }

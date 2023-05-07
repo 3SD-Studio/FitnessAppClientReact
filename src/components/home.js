@@ -3,6 +3,8 @@ import Calendar from './calendar.js';
 import Nextworkout from './nextworkout.js';
 import Progress from './progress.js';
 
+export default Home;
+
 function Home() {
   return (
     <div class="grid-container">
@@ -20,4 +22,3 @@ function Home() {
   );
 }
 
-export default Home;
